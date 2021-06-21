@@ -1,7 +1,7 @@
 import create from 'zustand'
 
 const useStore = create((set) => ({
-  numSelect: 15,
+  numSelect: null,
   questoes: [],
   addNum: (num) => set((state) => (state.numSelect = num)),
 

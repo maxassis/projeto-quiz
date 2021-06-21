@@ -1,14 +1,32 @@
-import React from 'react'
-import { Typography, Container, Button } from '@material-ui/core'
+import React, { useEffect, useState } from 'react'
+import { Typography, Container } from '@material-ui/core'
 import * as S from './styles'
+import useStore from '../../services/store'
+import api from '../../services/api'
 
 export function Questions() {
+  const [questions, setQuestions] = useState([])
+
+  const numberSelected = useStore((state) => state.numSelect)
+
+  useEffect(() => {
+    async function fetch() {
+      const { data } = await api.get(`api.php?amount=${numberSelected}`)
+      setQuestions(data.results)
+    }
+
+    fetch()
+  }, [numberSelected])
+
+  console.log(questions)
+  console.log(numberSelected)
+
   return (
     <Container style={{ display: 'flex', justifyContent: 'center' }}>
       <S.WrapperQuestions>
         <Typography variant="h4">
-          <strong>Questao 1:</strong>
-          fjdksfndskljfnlsdjfnsladfndslfdslkfnsdkjfnfkjfkds
+          <strong>Questao 1: </strong>
+          fjdksfndskljfnlsd {numberSelected}
         </Typography>
 
         <S.WrapperInputs>

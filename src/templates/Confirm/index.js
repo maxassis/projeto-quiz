@@ -10,14 +10,16 @@ export function Confirm() {
         <Typography variant="h4">Confirmar</Typography>
 
         <S.WrapperConfirmButtons>
-          <Button
-            color="primary"
-            variant="contained"
-            size="large"
-            style={{ width: '100%' }}
-          >
-            Start
-          </Button>
+          <Link to="/questions" style={{ textDecoration: 'none' }}>
+            <Button
+              color="primary"
+              variant="contained"
+              size="large"
+              style={{ width: '100%' }}
+            >
+              Start
+            </Button>
+          </Link>
           <Link to="/" style={{ textDecoration: 'none' }}>
             <Button
               variant="contained"

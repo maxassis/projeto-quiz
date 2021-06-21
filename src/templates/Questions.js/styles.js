@@ -5,7 +5,6 @@ export const WrapperQuestions = styled.div`
   display: flex;
   width: 80%;
   height: 100vh;
-  // background-color: purple;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -13,7 +12,6 @@ export const WrapperQuestions = styled.div`
 export const WrapperInputs = styled.div`
   width: 100%;
   padding: 45px;
-  // background-color: pink;
   display: flex;
   flex-direction: column;
   gap: 10px;
