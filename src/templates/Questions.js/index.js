@@ -12,6 +12,12 @@ export function Questions() {
   const { register, handleSubmit, reset } = useForm();
   const numberSelected = useStore((state) => state.numSelect);
 
+  const acerto = useStore((state) => state.questionsRight);
+  const erro = useStore((state) => state.questionsFail);
+
+  const contCorrectAnswer = useStore((state) => state.contQuestionsRight);
+  const contIncorrectAnswer = useStore((state) => state.contQuestionsFail);
+
   const questionActive = questions[next]?.question;
   const correctAnswer = questions[next]?.correct_answer;
 
@@ -24,7 +30,11 @@ export function Questions() {
   }, [numberSelected]);
 
   function onSubmit(data) {
-    console.log(data);
+    console.log(data.userResponse);
+
+    data.userResponse === "incorrect"
+      ? contIncorrectAnswer()
+      : contCorrectAnswer();
 
     if (next < questions.length - 1) setNext(next + 1);
     else alert("acabou a pagina");
@@ -41,8 +51,9 @@ export function Questions() {
         </p>
 
         <S.WrapperInputs>
-          {questionActive}
-          {correctAnswer}
+          {acerto}
+          <br />
+          {erro}
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
               <input
