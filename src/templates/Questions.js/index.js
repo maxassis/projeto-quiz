@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { Typography, Container } from '@material-ui/core'
+import { Container } from '@material-ui/core'
 import * as S from './styles'
 import useStore from '../../services/store'
 import api from '../../services/api'
+import { useForm } from "react-hook-form";
 
 export function Questions() {
   const [questions, setQuestions] = useState([])
   const [next, setNext] = useState(0)
 
+  const { register, handleSubmit} = useForm();
   const numberSelected = useStore((state) => state.numSelect)
 
   useEffect(() => {
@@ -15,14 +17,20 @@ export function Questions() {
       const { data } = await api.get(`api.php?amount=${numberSelected}`)
       setQuestions(data.results)
     }
-
     fetch()
   }, [numberSelected])
 
-  console.log(questions)
+  //console.log(questions)
 
-  function nextQuestion() {
-    if (next < questions.length - 1) setNext(next + 1)
+ /* function nextQuestion() {
+    if (next < questions.length - 1) setNext(next + 1) 
+    else alert('acabou a pagina')
+  } */
+
+  function onSubmit(data) {
+    console.log(data);
+
+    if (next < questions.length - 1) setNext(next + 1) 
     else alert('acabou a pagina')
   }
 
@@ -35,10 +43,10 @@ export function Questions() {
         </p>
 
         <S.WrapperInputs>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div>
-              <input id="0" type="radio" name="answer" required></input>
-              <S.Label for="0">{questions[next]?.correct_answer}</S.Label>
+              <input id="0" type="radio" name="answer" required {...register("userResponse", { required: true})}></input>
+              <S.Label htmlFor="0">{questions[next]?.correct_answer}</S.Label>
             </div>
             {questions[next]?.incorrect_answers.map((item, index) => {
               return (
@@ -48,8 +56,9 @@ export function Questions() {
                     type="radio"
                     name="answer"
                     required
+                    {...register("userResponse", { required: true})}
                   ></input>
-                  <S.Label for={index + 1}>{item}</S.Label>
+                  <S.Label htmlFor={index + 1}>{item}</S.Label>
                 </div>
               )
             })}
@@ -57,7 +66,6 @@ export function Questions() {
               <S.ButtonNext
                 color="primary"
                 variant="contained"
-                onClick={nextQuestion}
                 type="submit"
               >
                 Proxima
@@ -69,3 +77,5 @@ export function Questions() {
     </Container>
   )
 }
+
+
