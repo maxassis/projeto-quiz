@@ -11,7 +11,7 @@ export const WrapperQuestions = styled.div`
 `
 export const WrapperInputs = styled.div`
   width: 100%;
-  padding: 45px;
+  max-width: 90%;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -25,6 +25,8 @@ export const ButtonNext = styled(Button)``
 
 export const WrapperButton = styled.div`
   width: 100%;
+  max-width: 90%;
+  margin-top: 40px;
   display: flex;
   justify-content: flex-end;
   padding-right: 60px;
