@@ -4,6 +4,7 @@ const useStore = create((set) => ({
   numSelect: null,
   questionsRight: 15,
   questionsFail: 20,
+  questionsResult: [],
   addNum: (num) => set((state) => (state.numSelect = num)),
   contQuestionsRight: () =>
     set((state) => ({ questionsRight: state.questionsRight + 1 })),

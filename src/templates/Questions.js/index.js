@@ -30,12 +30,21 @@ export function Questions() {
   }, [numberSelected]);
 
   function onSubmit(data) {
-    console.log(data.userResponse);
-    console.log(questions[next]?.correct_answer);
+    // console.log(data.userResponse);
+    //console.log(questions[next]?.correct_answer);
 
     data.userResponse === questions[next]?.correct_answer
       ? contCorrectAnswer()
       : contIncorrectAnswer();
+
+    const addQuestion = {
+      number: next + 1,
+      title: questions[next]?.question,
+      responseSelected: data.userResponse,
+      correctResponse: questions[next]?.correct_answer,
+    };
+
+    console.log(addQuestion);
 
     if (next < questions.length - 1) setNext(next + 1);
     else alert("acabou a pagina");
