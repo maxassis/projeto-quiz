@@ -4,16 +4,16 @@ const useStore = create((set) => ({
   numSelect: null,
   questionsRight: 15,
   questionsFail: 20,
-  questionsResult: [],
+  finalResult: [],
   addNum: (num) => set((state) => (state.numSelect = num)),
   contQuestionsRight: () =>
     set((state) => ({ questionsRight: state.questionsRight + 1 })),
   contQuestionsFail: () =>
     set((state) => ({ questionsFail: state.questionsFail + 1 })),
 
-  addQuestao: (questao) =>
+  addQuestion: (question) =>
     set((state) => ({
-      questoes: [...state.questoes, questao],
+      finalResult: [...state.finalResult, question],
     })),
   removePokemon: (id) =>
     set((state) => ({

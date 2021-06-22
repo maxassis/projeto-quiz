@@ -1,8 +1,8 @@
-import CssBaseline from '@material-ui/core/CssBaseline'
-import { Home } from './templates/Home/index'
-import { Confirm } from './templates/Confirm/index'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { Questions } from './templates/Questions.js'
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { Home } from "./templates/Home/index";
+import { Confirm } from "./templates/Confirm/index";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Questions } from "./templates/Questions.js";
 
 function App() {
   return (
@@ -21,10 +21,14 @@ function App() {
           <Route exact path="/questions">
             <Questions />
           </Route>
+
+          <Route exact path="/">
+            <Questions />
+          </Route>
         </Switch>
       </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

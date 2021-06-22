@@ -8,18 +8,11 @@ import { useForm } from "react-hook-form";
 export function Questions() {
   const [questions, setQuestions] = useState([]);
   const [next, setNext] = useState(0);
-
   const { register, handleSubmit, reset } = useForm();
   const numberSelected = useStore((state) => state.numSelect);
-
-  const acerto = useStore((state) => state.questionsRight);
-  const erro = useStore((state) => state.questionsFail);
-
+  const addResult = useStore((state) => state.addQuestion);
   const contCorrectAnswer = useStore((state) => state.contQuestionsRight);
   const contIncorrectAnswer = useStore((state) => state.contQuestionsFail);
-
-  const questionActive = questions[next]?.question;
-  const correctAnswer = questions[next]?.correct_answer;
 
   useEffect(() => {
     async function fetch() {
@@ -30,9 +23,6 @@ export function Questions() {
   }, [numberSelected]);
 
   function onSubmit(data) {
-    // console.log(data.userResponse);
-    //console.log(questions[next]?.correct_answer);
-
     data.userResponse === questions[next]?.correct_answer
       ? contCorrectAnswer()
       : contIncorrectAnswer();
@@ -44,11 +34,8 @@ export function Questions() {
       correctResponse: questions[next]?.correct_answer,
     };
 
-    console.log(addQuestion);
-
-    if (next < questions.length - 1) setNext(next + 1);
-    else alert("acabou a pagina");
-
+    addResult(addQuestion);
+    next < questions.length - 1 ? setNext(next + 1) : alert("acabou a pagina");
     reset();
   }
 
@@ -61,9 +48,6 @@ export function Questions() {
         </p>
 
         <S.WrapperInputs>
-          {acerto}
-          <br />
-          {erro}
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
               <input
