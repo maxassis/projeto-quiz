@@ -1,51 +1,58 @@
-import React, { useEffect, useState } from 'react'
-import { Container } from '@material-ui/core'
-import * as S from './styles'
-import useStore from '../../services/store'
-import api from '../../services/api'
+import React, { useEffect, useState } from "react";
+import { Container } from "@material-ui/core";
+import * as S from "./styles";
+import useStore from "../../services/store";
+import api from "../../services/api";
 import { useForm } from "react-hook-form";
 
 export function Questions() {
-  const [questions, setQuestions] = useState([])
-  const [next, setNext] = useState(0)
+  const [questions, setQuestions] = useState([]);
+  const [next, setNext] = useState(0);
 
-  const { register, handleSubmit} = useForm();
-  const numberSelected = useStore((state) => state.numSelect)
+  const { register, handleSubmit, reset } = useForm();
+  const numberSelected = useStore((state) => state.numSelect);
+
+  const questionActive = questions[next]?.question;
+  const correctAnswer = questions[next]?.correct_answer;
 
   useEffect(() => {
     async function fetch() {
-      const { data } = await api.get(`api.php?amount=${numberSelected}`)
-      setQuestions(data.results)
+      const { data } = await api.get(`api.php?amount=${numberSelected}`);
+      setQuestions(data.results);
     }
-    fetch()
-  }, [numberSelected])
-
-  //console.log(questions)
-
- /* function nextQuestion() {
-    if (next < questions.length - 1) setNext(next + 1) 
-    else alert('acabou a pagina')
-  } */
+    fetch();
+  }, [numberSelected]);
 
   function onSubmit(data) {
     console.log(data);
 
-    if (next < questions.length - 1) setNext(next + 1) 
-    else alert('acabou a pagina')
+    if (next < questions.length - 1) setNext(next + 1);
+    else alert("acabou a pagina");
+
+    reset();
   }
 
   return (
-    <Container style={{ display: 'flex', justifyContent: 'center' }}>
+    <Container style={{ display: "flex", justifyContent: "center" }}>
       <S.WrapperQuestions>
-        <p variant="h4" style={{ maxWidth: '90%', fontSize: '30px' }}>
+        <p style={{ maxWidth: "90%", fontSize: "30px" }}>
           <strong>Questão {next + 1} : </strong>
           {questions[next]?.question}
         </p>
 
         <S.WrapperInputs>
+          {questionActive}
+          {correctAnswer}
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
-              <input id="0" type="radio" name="answer" required {...register("userResponse", { required: true})}></input>
+              <input
+                id="0"
+                type="radio"
+                name="answer"
+                required
+                value={questions[next]?.correct_answer}
+                {...register("userResponse", { required: true })}
+              ></input>
               <S.Label htmlFor="0">{questions[next]?.correct_answer}</S.Label>
             </div>
             {questions[next]?.incorrect_answers.map((item, index) => {
@@ -56,18 +63,15 @@ export function Questions() {
                     type="radio"
                     name="answer"
                     required
-                    {...register("userResponse", { required: true})}
+                    value="incorrect"
+                    {...register("userResponse", { required: true })}
                   ></input>
                   <S.Label htmlFor={index + 1}>{item}</S.Label>
                 </div>
-              )
+              );
             })}
             <S.WrapperButton>
-              <S.ButtonNext
-                color="primary"
-                variant="contained"
-                type="submit"
-              >
+              <S.ButtonNext color="primary" variant="contained" type="submit">
                 Proxima
               </S.ButtonNext>
             </S.WrapperButton>
@@ -75,7 +79,5 @@ export function Questions() {
         </S.WrapperInputs>
       </S.WrapperQuestions>
     </Container>
-  )
+  );
 }
-
-
