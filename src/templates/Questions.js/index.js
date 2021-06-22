@@ -31,10 +31,11 @@ export function Questions() {
 
   function onSubmit(data) {
     console.log(data.userResponse);
+    console.log(questions[next]?.correct_answer);
 
-    data.userResponse === "incorrect"
-      ? contIncorrectAnswer()
-      : contCorrectAnswer();
+    data.userResponse === questions[next]?.correct_answer
+      ? contCorrectAnswer()
+      : contIncorrectAnswer();
 
     if (next < questions.length - 1) setNext(next + 1);
     else alert("acabou a pagina");
@@ -74,7 +75,7 @@ export function Questions() {
                     type="radio"
                     name="answer"
                     required
-                    value="incorrect"
+                    value={item}
                     {...register("userResponse", { required: true })}
                   ></input>
                   <S.Label htmlFor={index + 1}>{item}</S.Label>
