@@ -14,5 +14,9 @@ const useStore = create((set) => ({
     set((state) => ({
       finalResult: [...state.finalResult, question],
     })),
+    resetResult: () =>
+    set(() => ({
+      finalResult: [], questionsRight: 0, questionsFail: 0
+    })),
 }));
 export default useStore;

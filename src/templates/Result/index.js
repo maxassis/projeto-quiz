@@ -48,10 +48,3 @@ export function Result() {
   );
 }
 
-
-// const addQuestion = {
-//   number: next + 1,
-//   title: questions[next]?.question,
-//   responseSelected: data.userResponse,
-//   correctResponse: questions[next]?.correct_answer,
-// };

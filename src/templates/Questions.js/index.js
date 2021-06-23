@@ -15,14 +15,16 @@ export function Questions() {
   const addResult = useStore((state) => state.addQuestion);
   const contCorrectAnswer = useStore((state) => state.contQuestionsRight);
   const contIncorrectAnswer = useStore((state) => state.contQuestionsFail);
+  const resetResult = useStore((state) => state.resetResult)
 
   useEffect(() => {
     async function fetch() {
       const { data } = await api.get(`api.php?amount=${numberSelected}`);
       setQuestions(data.results);
+      resetResult()
     }
     fetch();
-  }, [numberSelected]);
+  }, [numberSelected, resetResult]);
 
   function onSubmit(data) {
     data.userResponse === questions[next]?.correct_answer
