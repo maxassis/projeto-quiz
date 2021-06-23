@@ -3,6 +3,7 @@ import { Home } from "./templates/Home/index";
 import { Confirm } from "./templates/Confirm/index";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Questions } from "./templates/Questions.js";
+import {Result} from "./templates/Result/index"
 
 function App() {
   return (
@@ -22,8 +23,8 @@ function App() {
             <Questions />
           </Route>
 
-          <Route exact path="/">
-            <Questions />
+          <Route exact path="/result">
+            <Result />
           </Route>
         </Switch>
       </BrowserRouter>

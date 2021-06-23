@@ -4,11 +4,13 @@ import * as S from "./styles";
 import useStore from "../../services/store";
 import api from "../../services/api";
 import { useForm } from "react-hook-form";
+import { useHistory } from 'react-router-dom'
 
 export function Questions() {
   const [questions, setQuestions] = useState([]);
   const [next, setNext] = useState(0);
   const { register, handleSubmit, reset } = useForm();
+  const history = useHistory()
   const numberSelected = useStore((state) => state.numSelect);
   const addResult = useStore((state) => state.addQuestion);
   const contCorrectAnswer = useStore((state) => state.contQuestionsRight);
@@ -35,7 +37,7 @@ export function Questions() {
     };
 
     addResult(addQuestion);
-    next < questions.length - 1 ? setNext(next + 1) : alert("acabou a pagina");
+    next < questions.length - 1 ? setNext(next + 1) : history.push('/result');
     reset();
   }
 
