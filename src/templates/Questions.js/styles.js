@@ -1,13 +1,13 @@
-import styled from 'styled-components'
-import {Container} from "../../components/container"
+import styled from "styled-components";
+import { Container } from "../../components/container";
 
-export const WrapperMain = styled.div``
+export const WrapperMain = styled.div``;
 
 export const ContainerMain = styled(Container)`
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 
 export const WrapperLottie = styled.div`
   width: 50%;
@@ -16,12 +16,11 @@ export const WrapperLottie = styled.div`
   @media (max-width: 600px) {
     margin-top: 5rem;
   }
-
-`
+`;
 
 export const WrapperQuestions = styled.div`
   display: flex;
-  width:100%;
+  width: 100%;
   max-width: 80%;
   height: 100vh;
   background-color: white;
@@ -35,11 +34,11 @@ export const WrapperQuestions = styled.div`
   height: auto;
   margin-top: 2rem;
 
-  p{
+  p {
     font-size: 1.9rem;
   }
 
-  strong{
+  strong {
     font-size: 2.1rem;
   }
 
@@ -51,41 +50,39 @@ export const WrapperQuestions = styled.div`
     max-width: 95%;
     padding: 2rem;
   }
-
-
-`
+`;
 export const WrapperInputs = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   margin-top: 1.5rem;
 
-  form{
+  form {
     gap: 0.7rem;
     display: flex;
     flex-direction: column;
 
     @media (max-width: 480px) {
-    gap: 1.7rem;
+      gap: 1.7rem;
+    }
   }
-  }
-`
+`;
 export const Label = styled.label`
   font-size: 1.4375rem;
   margin-left: 0.625rem;
-`
+`;
 
 export const ButtonNext = styled.button`
-    background-color: #f77f00d9;
-    padding: 0.6rem 2.6rem;
-    border-radius: 0.9rem;
-    transition: all 0.3s;
+  background-color: #f77f00d9;
+  padding: 0.6rem 2.6rem;
+  border-radius: 0.9rem;
+  transition: all 0.3s;
 
-    :hover{
-      background-color: #FF7600;
-      color: white;
-    }
-`
+  :hover {
+    background-color: #ff7600;
+    color: white;
+  }
+`;
 
 export const WrapperButton = styled.div`
   width: 100%;
@@ -93,4 +90,4 @@ export const WrapperButton = styled.div`
   display: flex;
   justify-content: flex-end;
   padding-right: 3.75rem;
-`
+`;

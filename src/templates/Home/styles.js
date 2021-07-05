@@ -12,8 +12,6 @@ export const WrapperLottie = styled.div`
   @media (max-width: 600px) {
     margin-top: 5rem;
   }
-
-
 `;
 
 export const Main = styled.div`
@@ -36,7 +34,7 @@ export const Main = styled.div`
     max-width: 95%;
     padding: 5rem 0.9rem;
   }
-`
+`;
 
 export const WrapperButton = styled.div`
   margin-top: 4.375rem;
@@ -49,11 +47,10 @@ export const WrapperButton = styled.div`
     border-radius: 9px;
     transition: all 0.3s;
 
-    :hover{
-      background-color: #FF7600;
+    :hover {
+      background-color: #ff7600;
       color: white;
     }
-
   }
 `;
 
@@ -67,9 +64,8 @@ export const WrapperSubtitle = styled.div`
     font-size: 2rem;
 
     @media (max-width: 480px) {
-    text-align: center;
-  }
-
+      text-align: center;
+    }
   }
 `;
 
@@ -82,8 +78,4 @@ export const InputNumber = styled.input`
   margin-top: 8px;
   outline: 0;
 
-  input[type="number"]::-webkit-inner-spin-button,
-  input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-  }
 `;

@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import styled from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
 
@@ -36,6 +35,6 @@ button {
   background-color: transparent;
   cursor: pointer;
 }
-`
+`;
 
 export default GlobalStyles;
