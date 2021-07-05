@@ -15,14 +15,28 @@ export const ButtonConfirm = styled.button`
     background-color: #f77f00d9;
     padding: 6px 26px;
     border-radius: 9px;
+    transition: all 0.3s;
+
+    :hover{
+      background-color: #FF7600;
+      color: white;
+    }
+
 
 `
 
 export const ButtonCancel = styled.button`
-    background-color: #0A1931;
+    background-color: #0C4271;
     padding: 6px 26px;
     border-radius: 9px;
     color: white;
+    transition: all 0.3s;
+
+    :hover{
+      background-color: #0A1931;
+      color: white;
+    }
+
 
 `
 

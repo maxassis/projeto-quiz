@@ -37,7 +37,7 @@ export function Home() {
       <S.Main>
         <form>
           <S.WrapperSubtitle>
-            <h3 variante="h6">
+            <h3>
               Quantas questões você quer responder?
             </h3>
 

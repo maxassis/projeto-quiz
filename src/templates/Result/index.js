@@ -25,9 +25,11 @@ export function Result() {
   return (
     <Container>
       <S.WrapperResults>
+        <S.WrapperButtonBack>
         <Link to="/" style={{textDecoration: "none"}}>
-        <S.ButtonBack>novo quiz</S.ButtonBack>
+        <S.ButtonBack>INICIAR NOVO QUIZ</S.ButtonBack>
         </Link>
+        </S.WrapperButtonBack>
 
         <S.WrapperLottie>
           <Lottie options={defaultOptions} />

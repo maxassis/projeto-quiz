@@ -2,17 +2,36 @@ import styled from "styled-components";
 
 export const WrapperMain = styled.div``
 
+export const WrapperButtonBack = styled.div`
+    display: flex;
+    justify-content: center;
+
+`
+
 export const ButtonBack = styled.button`
     background-color: #f77f00d9;
     padding: 6px 26px;
     border-radius: 9px;
     margin-top: 1rem;
+    transition: all 0.3s;
+
+    :hover{
+      background-color: #FF7600;
+      color: white;
+      transform: scale(1.1);
+    }
+
+
 `
 
 export const WrapperLottie = styled.div`
     width: 40%;
     display: flex;
     margin: 0 auto;
+
+    @media (max-width: 480px) {
+        width: 55%;
+    }
 `
 
 
@@ -56,6 +75,15 @@ export const WrapperScore = styled.div`
 
     span {
         font-size:2.1875rem;
+     
+        @media (max-width: 480px) {
+        font-size: 1.5rem;
+    }
+    }
+
+    @media (max-width: 480px) {
+        gap:3.75rem;
+
     }
 
 
@@ -86,7 +114,8 @@ export const WrapperAnswer = styled.div`
 
 export const CorrectQuestion = styled.div`
     margin-top: 3.75rem;
-    width: 70%;
+    width: 100%;
+    max-width: 70%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -103,6 +132,16 @@ export const CorrectQuestion = styled.div`
     :last-child{
         margin-bottom: 5rem;
     }
+
+    @media (max-width: 600px) {
+    max-width: 90%;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 95%;
+    padding: 2rem;
+  }
+
 
 `
 

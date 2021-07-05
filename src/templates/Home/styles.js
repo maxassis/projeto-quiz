@@ -8,6 +8,12 @@ export const WrapperLottie = styled.div`
   width: 60%;
   margin: 0 auto;
   margin-top: 1rem;
+
+  @media (max-width: 600px) {
+    margin-top: 5rem;
+  }
+
+
 `;
 
 export const Main = styled.div`
@@ -21,7 +27,16 @@ export const Main = styled.div`
   width: 100%;
   max-width: 77%;
   margin: 2rem auto;
-`;
+
+  @media (max-width: 600px) {
+    max-width: 80%;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 95%;
+    padding: 5rem 0.9rem;
+  }
+`
 
 export const WrapperButton = styled.div`
   margin-top: 4.375rem;
@@ -32,6 +47,13 @@ export const WrapperButton = styled.div`
     background-color: #f77f00d9;
     padding: 6px 26px;
     border-radius: 9px;
+    transition: all 0.3s;
+
+    :hover{
+      background-color: #FF7600;
+      color: white;
+    }
+
   }
 `;
 
@@ -43,6 +65,11 @@ export const WrapperSubtitle = styled.div`
   h3 {
     color: black;
     font-size: 2rem;
+
+    @media (max-width: 480px) {
+    text-align: center;
+  }
+
   }
 `;
 

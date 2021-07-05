@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import styled from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
 
@@ -21,6 +22,14 @@ img {
 html {
   font-size: 65.5%;
   background-color: #0db4a4;
+
+  @media (max-width: 600px) {
+    font-size: 55%;
+
+
+  }
+
+
 }
 
 button {
