@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Desafio Quiz
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Imagine que você foi contratado para desenvolver uma aplicação WEB para responder questionários de perguntas sobre conhecimentos gerais. Ao acessar a página, o usuário deve escolher a quantidade de perguntas que deseja responder. Após escolher, deve aparecer uma página com dois botões, “Start” e “Cancel”. Ao selecionar “Cancel”, deve retornar para escolher a quantidade. Ao selecionar “Start” deve fazer requisição na URL disponibilizada, pegar as perguntas e a cada pergunta, deve exibir as respostas. O usuário deve escolher uma resposta e a cada resposta deve contabilizar quantidade de acertos e erros. Ao final, deve vir um relatório com a quantidade de acertos e erros e uma lista de cada questão e qual foi certo e qual foi errado. Nessa lista também deve aparecer a resposta escolhida e a resposta correta.
 
-## Available Scripts
+Devera ser usada a api https://opentdb.com, para gerar as questões
 
-In the project directory, you can run:
 
-### `yarn start`
+## Tecnologias principais
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<li>HTML, CSS, JavaScript e ReactJS</li>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Bibliotecas
 
-### `yarn test`
+Axios <br/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Styled Components <br/>
 
-### `yarn build`
+Lottie <br/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Zustand <br/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+React hook forms
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Instruções
 
-### `yarn eject`
+Clone o projeto utilizando o comando:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+`https://github.com/maxassis/projeto-quizz.git`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+em seguida acesse a pasta do projeto e faça a instalação:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`npm install`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+dentro da pasta do projeto execute o comando para rodar a aplicação
 
-## Learn More
+`npm start`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Deploy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+[https://max-quizz.netlify.app](https://max-quizz.netlify.app)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## Telas
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![](https://images2.imgbox.com/79/c0/saecMOJ7_o.png)
 
-### Advanced Configuration
+![](https://images2.imgbox.com/d9/a6/ekB3AHoa_o.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![](https://images2.imgbox.com/17/af/4OrhdRaU_o.png)
 
-### Deployment
+![](https://images2.imgbox.com/75/a8/C1mBxw2k_o.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![](https://images2.imgbox.com/54/12/pUs58gah_o.png)
