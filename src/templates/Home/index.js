@@ -1,8 +1,19 @@
 import React, { useState } from 'react'
-import { Typography, Container, Button } from '@material-ui/core'
 import * as S from './styles'
 import useStore from '../../services/store'
 import { useHistory } from 'react-router-dom'
+import {Container} from '../../components/container'
+import Lottie from "react-lottie";
+import animationData from "../../assets/imgs/quiz.json";
+
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: animationData,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
 
 export function Home() {
   const [num, setNum] = useState(null)
@@ -18,44 +29,40 @@ export function Home() {
   }
 
   return (
+    <S.WrapperMain>
     <Container>
-      <S.Title>
-        <Typography variant="h4" align="center">
-          Teste seus conhecimentos gerais no questionario <br />
-          WAPROJECT
-        </Typography>
-      </S.Title>
-
+      <S.WrapperLottie>
+      <Lottie options={defaultOptions} />
+      </S.WrapperLottie>
       <S.Main>
-        <form style={{ textAlign: 'center' }}>
+        <form>
           <S.WrapperSubtitle>
-            <Typography variante="h6">
+            <h3 variante="h6">
               Quantas questões você quer responder?
-            </Typography>
+            </h3>
 
             <S.InputNumber
               type="number"
               required
               placeholder="digite o numero de questões"
-              fullWidth
               value={num}
-              margin="dense"
               onChange={(e) => setNum(e.target.value)}
             />
           </S.WrapperSubtitle>
 
           <S.WrapperButton>
-            <Button
+            <button
               color="primary"
               variant="contained"
               onClick={nextPage}
               type="submit"
             >
               Proximo
-            </Button>
+            </button>
           </S.WrapperButton>
         </form>
       </S.Main>
     </Container>
+    </S.WrapperMain>
   )
 }

@@ -1,37 +1,38 @@
 import React from 'react'
-import { Typography, Button } from '@material-ui/core'
 import * as S from './styles'
 import { Link } from 'react-router-dom'
+import {Container} from '../../components/container'
 
 export function Confirm() {
   return (
-    <S.ContainerConfirm>
-      <S.ContainerForm>
-        <Typography variant="h4">Confirmar</Typography>
+    <Container>
+      <S.ContainerForm>    
 
         <S.WrapperConfirmButtons>
+        <h1>Confirmar</h1>
+
           <Link to="/questions" style={{ textDecoration: 'none' }}>
-            <Button
+            <S.ButtonConfirm
               color="primary"
               variant="contained"
               size="large"
               style={{ width: '100%' }}
             >
-              Start
-            </Button>
+              Iniciar
+            </S.ButtonConfirm>
           </Link>
           <Link to="/" style={{ textDecoration: 'none' }}>
-            <Button
+            <S.ButtonCancel
               variant="contained"
               color="secondary"
               size="large"
               style={{ width: '100%' }}
             >
-              Cancel
-            </Button>
+              Cancelar
+            </S.ButtonCancel>
           </Link>
         </S.WrapperConfirmButtons>
       </S.ContainerForm>
-    </S.ContainerConfirm>
+    </Container>
   )
 }

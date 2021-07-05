@@ -1,14 +1,14 @@
-import CssBaseline from "@material-ui/core/CssBaseline";
 import { Home } from "./templates/Home/index";
 import { Confirm } from "./templates/Confirm/index";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Questions } from "./templates/Questions.js";
 import {Result} from "./templates/Result/index"
+import GlobalStyles from "./styles/global";
 
 function App() {
   return (
     <>
-      <CssBaseline />
+    <GlobalStyles />
       <BrowserRouter>
         <Switch>
           <Route exact path="/">

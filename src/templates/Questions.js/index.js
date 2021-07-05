@@ -1,27 +1,37 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "@material-ui/core";
 import * as S from "./styles";
 import useStore from "../../services/store";
 import api from "../../services/api";
 import { useForm } from "react-hook-form";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
+import Lottie from "react-lottie";
+import animationData from "../../assets/imgs/quiz.json";
+
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: animationData,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
 
 export function Questions() {
   const [questions, setQuestions] = useState([]);
   const [next, setNext] = useState(0);
   const { register, handleSubmit, reset } = useForm();
-  const history = useHistory()
+  const history = useHistory();
   const numberSelected = useStore((state) => state.numSelect);
   const addResult = useStore((state) => state.addQuestion);
   const contCorrectAnswer = useStore((state) => state.contQuestionsRight);
   const contIncorrectAnswer = useStore((state) => state.contQuestionsFail);
-  const resetResult = useStore((state) => state.resetResult)
+  const resetResult = useStore((state) => state.resetResult);
 
   useEffect(() => {
     async function fetch() {
       const { data } = await api.get(`api.php?amount=${numberSelected}`);
       setQuestions(data.results);
-      resetResult()
+      resetResult();
     }
     fetch();
   }, [numberSelected, resetResult]);
@@ -39,54 +49,61 @@ export function Questions() {
     };
 
     addResult(addQuestion);
-    next < questions.length - 1 ? setNext(next + 1) : history.push('/result');
+    next < questions.length - 1 ? setNext(next + 1) : history.push("/result");
     reset();
   }
 
   return (
-    <Container style={{ display: "flex", justifyContent: "center" }}>
-      <S.WrapperQuestions>
-        <p style={{ maxWidth: "90%", fontSize: "30px" }}>
-          <strong>Questão {next + 1} : </strong>
-          {questions[next]?.question}
-        </p>
+    <S.WrapperMain>
+      <S.ContainerMain>
 
-        <S.WrapperInputs>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
-              <input
-                id="0"
-                type="radio"
-                name="answer"
-                required
-                value={questions[next]?.correct_answer}
-                {...register("userResponse", { required: true })}
-              ></input>
-              <S.Label htmlFor="0">{questions[next]?.correct_answer}</S.Label>
-            </div>
-            {questions[next]?.incorrect_answers.map((item, index) => {
-              return (
-                <div key={index}>
-                  <input
-                    id={index + 1}
-                    type="radio"
-                    name="answer"
-                    required
-                    value={item}
-                    {...register("userResponse", { required: true })}
-                  ></input>
-                  <S.Label htmlFor={index + 1}>{item}</S.Label>
-                </div>
-              );
-            })}
-            <S.WrapperButton>
-              <S.ButtonNext color="primary" variant="contained" type="submit">
-                Proxima
-              </S.ButtonNext>
-            </S.WrapperButton>
-          </form>
-        </S.WrapperInputs>
-      </S.WrapperQuestions>
-    </Container>
+      <S.WrapperLottie>
+      <Lottie options={defaultOptions} />
+      </S.WrapperLottie>
+
+        <S.WrapperQuestions>
+          <p>
+            <strong>Questão {next + 1} : </strong>
+            {questions[next]?.question}
+          </p>
+
+          <S.WrapperInputs>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div>
+                <input
+                  id="0"
+                  type="radio"
+                  name="answer"
+                  required
+                  value={questions[next]?.correct_answer}
+                  {...register("userResponse", { required: true })}
+                ></input>
+                <S.Label htmlFor="0">{questions[next]?.correct_answer}</S.Label>
+              </div>
+              {questions[next]?.incorrect_answers.map((item, index) => {
+                return (
+                  <div key={index}>
+                    <input
+                      id={index + 1}
+                      type="radio"
+                      name="answer"
+                      required
+                      value={item}
+                      {...register("userResponse", { required: true })}
+                    ></input>
+                    <S.Label htmlFor={index + 1}>{item}</S.Label>
+                  </div>
+                );
+              })}
+              <S.WrapperButton>
+                <S.ButtonNext type="submit">
+                  Proxima
+                </S.ButtonNext>
+              </S.WrapperButton>
+            </form>
+          </S.WrapperInputs>
+        </S.WrapperQuestions>
+      </S.ContainerMain>
+    </S.WrapperMain>
   );
 }
